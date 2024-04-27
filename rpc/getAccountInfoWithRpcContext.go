@@ -19,7 +19,7 @@ package rpc
 import (
 	"context"
 
-	"github.com/gagliardetto/solana-go"
+	"github.com/MintyFinance/solana-go-custom"
 )
 
 // GetAccountInfoWithRpcContext is similar to GetAccountInfoWithOpts but will return rpcContext and nil account if account is not found

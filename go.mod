@@ -1,4 +1,4 @@
-module github.com/gagliardetto/solana-go
+module github.com/MintyFinance/solana-go-custom
 
 go 1.19
 

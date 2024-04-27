@@ -22,11 +22,11 @@ import (
 	"log"
 	"os"
 
+	"github.com/MintyFinance/solana-go-custom"
+	"github.com/MintyFinance/solana-go-custom/programs/token"
+	"github.com/MintyFinance/solana-go-custom/rpc"
+	"github.com/MintyFinance/solana-go-custom/text"
 	bin "github.com/gagliardetto/binary"
-	"github.com/gagliardetto/solana-go"
-	"github.com/gagliardetto/solana-go/programs/token"
-	"github.com/gagliardetto/solana-go/rpc"
-	"github.com/gagliardetto/solana-go/text"
 	"github.com/spf13/cobra"
 )
 

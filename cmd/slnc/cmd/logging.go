@@ -21,7 +21,7 @@ import (
 	"os"
 	"strings"
 
-	zapbox "github.com/gagliardetto/solana-go/zap-box"
+	zapbox "github.com/MintyFinance/solana-go-custom/zap-box"
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
 
@@ -31,7 +31,7 @@ import (
 var zlog *zap.Logger
 
 func init() {
-	logging.Register("github.com/gagliardetto/solana-go/cmd/slnc/cmd", &zlog)
+	logging.Register("github.com/MintyFinance/solana-go-custom/cmd/slnc/cmd", &zlog)
 }
 
 func SetupLogger() {

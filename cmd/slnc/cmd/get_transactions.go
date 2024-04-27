@@ -22,13 +22,13 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/gagliardetto/solana-go"
-	_ "github.com/gagliardetto/solana-go/programs/serum"
-	_ "github.com/gagliardetto/solana-go/programs/system"
-	_ "github.com/gagliardetto/solana-go/programs/token"
-	_ "github.com/gagliardetto/solana-go/programs/tokenregistry"
-	"github.com/gagliardetto/solana-go/rpc"
-	"github.com/gagliardetto/solana-go/text"
+	"github.com/MintyFinance/solana-go-custom"
+	_ "github.com/MintyFinance/solana-go-custom/programs/serum"
+	_ "github.com/MintyFinance/solana-go-custom/programs/system"
+	_ "github.com/MintyFinance/solana-go-custom/programs/token"
+	_ "github.com/MintyFinance/solana-go-custom/programs/tokenregistry"
+	"github.com/MintyFinance/solana-go-custom/rpc"
+	"github.com/MintyFinance/solana-go-custom/text"
 	"github.com/spf13/cobra"
 )
 

@@ -21,11 +21,11 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/gagliardetto/solana-go/rpc"
+	"github.com/MintyFinance/solana-go-custom/rpc"
 
-	"github.com/gagliardetto/solana-go"
-	"github.com/gagliardetto/solana-go/programs/tokenregistry"
-	"github.com/gagliardetto/solana-go/text"
+	"github.com/MintyFinance/solana-go-custom"
+	"github.com/MintyFinance/solana-go-custom/programs/tokenregistry"
+	"github.com/MintyFinance/solana-go-custom/text"
 	"github.com/spf13/cobra"
 )
 
