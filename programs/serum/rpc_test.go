@@ -23,13 +23,13 @@ import (
 	"os"
 	"testing"
 
-	"github.com/gagliardetto/solana-go/rpc/ws"
+	"github.com/MintyFinance/solana-go-custom/rpc/ws"
 
-	"github.com/gagliardetto/solana-go/rpc"
+	"github.com/MintyFinance/solana-go-custom/rpc"
 
 	"github.com/stretchr/testify/require"
 
-	"github.com/gagliardetto/solana-go"
+	"github.com/MintyFinance/solana-go-custom"
 )
 
 func TestFetchMarket(t *testing.T) {

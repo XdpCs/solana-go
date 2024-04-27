@@ -21,8 +21,8 @@ import (
 	"context"
 	"fmt"
 
+	"github.com/MintyFinance/solana-go-custom/rpc"
 	bin "github.com/gagliardetto/binary"
-	"github.com/gagliardetto/solana-go/rpc"
 )
 
 const MINT_SIZE = 82

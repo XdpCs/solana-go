@@ -19,10 +19,10 @@ import (
 	"encoding/binary"
 	"fmt"
 
+	"github.com/MintyFinance/solana-go-custom"
+	"github.com/MintyFinance/solana-go-custom/text"
 	"github.com/davecgh/go-spew/spew"
 	bin "github.com/gagliardetto/binary"
-	"github.com/gagliardetto/solana-go"
-	"github.com/gagliardetto/solana-go/text"
 	"github.com/gagliardetto/treeout"
 )
 

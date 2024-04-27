@@ -25,10 +25,10 @@ import (
 	"testing"
 	"time"
 
+	"github.com/MintyFinance/solana-go-custom"
+	"github.com/MintyFinance/solana-go-custom/diff"
+	"github.com/MintyFinance/solana-go-custom/rpc"
 	bin "github.com/gagliardetto/binary"
-	"github.com/gagliardetto/solana-go"
-	"github.com/gagliardetto/solana-go/diff"
-	"github.com/gagliardetto/solana-go/rpc"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )

@@ -19,9 +19,9 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/gagliardetto/solana-go"
-	"github.com/gagliardetto/solana-go/rpc"
-	"github.com/gagliardetto/solana-go/rpc/ws"
+	"github.com/MintyFinance/solana-go-custom"
+	"github.com/MintyFinance/solana-go-custom/rpc"
+	"github.com/MintyFinance/solana-go-custom/rpc/ws"
 )
 
 // Send and wait for confirmation of a transaction.

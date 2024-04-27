@@ -3,7 +3,7 @@ package rpc
 import (
 	"context"
 
-	"github.com/gagliardetto/solana-go"
+	"github.com/MintyFinance/solana-go-custom"
 )
 
 // Returns whether a blockhash is still valid or not
