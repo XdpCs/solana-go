@@ -19,11 +19,6 @@ import (
 	"github.com/MintyFinance/solana-go-custom/rpc"
 )
 
-type GetParsedTransactionResult struct {
-	Transaction *rpc.ParsedTransaction
-	Meta        *rpc.ParsedTransactionMeta
-}
-
 type TransactionSubscribeOpts struct {
 	Signature                      *solana.Signature
 	AccountInclude                 []*solana.PublicKey
@@ -32,15 +27,6 @@ type TransactionSubscribeOpts struct {
 	Commitment                     rpc.CommitmentType
 	MaxSupportedTransactionVersion uint
 	TransactionDetails             rpc.TransactionDetailsType
-}
-
-type TransactionResult struct {
-	Context struct {
-		Slot uint64
-	} `json:"context"`
-	Value struct {
-		Err interface{} `json:"err"`
-	} `json:"value"`
 }
 
 // SignatureSubscribe subscribes to a transaction signature to receive
@@ -82,7 +68,7 @@ func (cl *Client) TransactionSubscribe(
 		"transactionSubscribe",
 		"transactionUnsubscribe",
 		func(msg []byte) (interface{}, error) {
-			var res TransactionResult
+			var res rpc.GetParsedTransactionResult
 			err := decodeResponseFromMessage(msg, &res)
 			return &res, err
 		},
@@ -99,10 +85,10 @@ type TransactionSubscription struct {
 	sub *Subscription
 }
 
-func (sw *TransactionSubscription) Recv() (*TransactionResult, error) {
+func (sw *TransactionSubscription) Recv() (*rpc.GetParsedTransactionResult, error) {
 	select {
 	case d := <-sw.sub.stream:
-		return d.(*TransactionResult), nil
+		return d.(*rpc.GetParsedTransactionResult), nil
 	case err := <-sw.sub.err:
 		return nil, err
 	}
@@ -112,15 +98,15 @@ func (sw *TransactionSubscription) Err() <-chan error {
 	return sw.sub.err
 }
 
-func (sw *TransactionSubscription) Response() <-chan *TransactionResult {
-	typedChan := make(chan *TransactionResult, 1)
-	go func(ch chan *TransactionResult) {
+func (sw *TransactionSubscription) Response() <-chan *rpc.GetParsedTransactionResult {
+	typedChan := make(chan *rpc.GetParsedTransactionResult, 1)
+	go func(ch chan *rpc.GetParsedTransactionResult) {
 		// TODO: will this subscription yield more than one result?
 		d, ok := <-sw.sub.stream
 		if !ok {
 			return
 		}
-		ch <- d.(*TransactionResult)
+		ch <- d.(*rpc.GetParsedTransactionResult)
 	}(typedChan)
 	return typedChan
 }
