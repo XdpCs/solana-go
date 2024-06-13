@@ -21,9 +21,9 @@ import (
 
 type TransactionSubscribeOpts struct {
 	Signature                      *solana.Signature
-	AccountInclude                 []*solana.PublicKey
-	AccountExclude                 []*solana.PublicKey
-	AccountRequired                []*solana.PublicKey
+	AccountInclude                 []solana.PublicKey
+	AccountExclude                 []solana.PublicKey
+	AccountRequired                []solana.PublicKey
 	Commitment                     rpc.CommitmentType
 	MaxSupportedTransactionVersion uint
 	TransactionDetails             rpc.TransactionDetailsType
