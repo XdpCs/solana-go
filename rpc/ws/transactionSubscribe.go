@@ -19,6 +19,10 @@ import (
 	"github.com/MintyFinance/solana-go-custom/rpc"
 )
 
+type TransactionResult struct {
+	Transaction *rpc.GetParsedTransactionResult `json:"transaction"`
+}
+
 type TransactionSubscribeOpts struct {
 	Signature                      *solana.Signature
 	AccountInclude                 []solana.PublicKey
@@ -68,7 +72,7 @@ func (cl *Client) TransactionSubscribe(
 		"transactionSubscribe",
 		"transactionUnsubscribe",
 		func(msg []byte) (interface{}, error) {
-			var res rpc.GetParsedTransactionResult
+			var res TransactionResult
 			err := decodeResponseFromMessage(msg, &res)
 			return &res, err
 		},
@@ -85,10 +89,10 @@ type TransactionSubscription struct {
 	sub *Subscription
 }
 
-func (sw *TransactionSubscription) Recv() (*rpc.GetParsedTransactionResult, error) {
+func (sw *TransactionSubscription) Recv() (*TransactionResult, error) {
 	select {
 	case d := <-sw.sub.stream:
-		return d.(*rpc.GetParsedTransactionResult), nil
+		return d.(*TransactionResult), nil
 	case err := <-sw.sub.err:
 		return nil, err
 	}
@@ -98,15 +102,15 @@ func (sw *TransactionSubscription) Err() <-chan error {
 	return sw.sub.err
 }
 
-func (sw *TransactionSubscription) Response() <-chan *rpc.GetParsedTransactionResult {
-	typedChan := make(chan *rpc.GetParsedTransactionResult, 1)
-	go func(ch chan *rpc.GetParsedTransactionResult) {
+func (sw *TransactionSubscription) Response() <-chan *TransactionResult {
+	typedChan := make(chan *TransactionResult, 1)
+	go func(ch chan *TransactionResult) {
 		// TODO: will this subscription yield more than one result?
 		d, ok := <-sw.sub.stream
 		if !ok {
 			return
 		}
-		ch <- d.(*rpc.GetParsedTransactionResult)
+		ch <- d.(*TransactionResult)
 	}(typedChan)
 	return typedChan
 }
