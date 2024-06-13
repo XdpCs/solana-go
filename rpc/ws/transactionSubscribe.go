@@ -21,10 +21,10 @@ import (
 
 type TransactionResult struct {
 	Transaction *rpc.GetParsedTransactionResult `json:"transaction"`
+	Signature   string                          `json:"signature"`
 }
 
 type TransactionSubscribeOpts struct {
-	Signature                      *solana.Signature
 	AccountInclude                 []solana.PublicKey
 	AccountExclude                 []solana.PublicKey
 	AccountRequired                []solana.PublicKey
@@ -42,10 +42,6 @@ func (cl *Client) TransactionSubscribe(
 ) (*TransactionSubscription, error) {
 	filters := rpc.M{
 		"failed": opts.IncludeFailed,
-	}
-
-	if opts.Signature != nil {
-		filters["signature"] = opts.Signature.String()
 	}
 
 	if len(opts.AccountInclude) > 0 {
