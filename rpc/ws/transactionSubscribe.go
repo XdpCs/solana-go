@@ -31,6 +31,7 @@ type TransactionSubscribeOpts struct {
 	Commitment                     rpc.CommitmentType
 	MaxSupportedTransactionVersion uint
 	TransactionDetails             rpc.TransactionDetailsType
+	IncludeFailed                  bool
 }
 
 // SignatureSubscribe subscribes to a transaction signature to receive
@@ -40,7 +41,7 @@ func (cl *Client) TransactionSubscribe(
 	opts *TransactionSubscribeOpts,
 ) (*TransactionSubscription, error) {
 	filters := rpc.M{
-		"failed": false,
+		"failed": opts.IncludeFailed,
 	}
 
 	if opts.Signature != nil {
