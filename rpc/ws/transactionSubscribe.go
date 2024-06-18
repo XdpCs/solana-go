@@ -100,14 +100,14 @@ func (sw *TransactionSubscription) Err() <-chan error {
 }
 
 func (sw *TransactionSubscription) Response() <-chan *TransactionResult {
-	typedChan := make(chan *TransactionResult, 1)
+	typedChan := make(chan *TransactionResult) // can be buffered if needed
 	go func(ch chan *TransactionResult) {
-		// TODO: will this subscription yield more than one result?
-		d, ok := <-sw.sub.stream
-		if !ok {
-			return
+		defer close(ch)
+		for d := range sw.sub.stream {
+			if transactionResult, ok := d.(*TransactionResult); ok {
+				ch <- transactionResult
+			}
 		}
-		ch <- d.(*TransactionResult)
 	}(typedChan)
 	return typedChan
 }

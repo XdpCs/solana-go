@@ -121,14 +121,14 @@ func (sw *LogSubscription) Err() <-chan error {
 }
 
 func (sw *LogSubscription) Response() <-chan *LogResult {
-	typedChan := make(chan *LogResult, 1)
+	typedChan := make(chan *LogResult)
 	go func(ch chan *LogResult) {
-		// TODO: will this subscription yield more than one result?
-		d, ok := <-sw.sub.stream
-		if !ok {
-			return
+		defer close(ch)
+		for d := range sw.sub.stream {
+			if logResult, ok := d.(*LogResult); ok {
+				ch <- logResult
+			}
 		}
-		ch <- d.(*LogResult)
 	}(typedChan)
 	return typedChan
 }
