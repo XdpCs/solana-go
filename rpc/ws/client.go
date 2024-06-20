@@ -389,7 +389,7 @@ func decodeResponseFromMessage(r []byte, reply interface{}) (err error) {
 		return jsonErr
 	}
 
-	if c.Params == nil {
+	if c.Params == nil || c.Params.Result == nil {
 		return json2.ErrNullResult
 	}
 
