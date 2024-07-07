@@ -100,7 +100,7 @@ func (sw *TransactionSubscription) Err() <-chan error {
 }
 
 func (sw *TransactionSubscription) Response() <-chan *TransactionResult {
-	typedChan := make(chan *TransactionResult) // can be buffered if needed
+	typedChan := make(chan *TransactionResult, 100) // can be buffered if needed
 	go func(ch chan *TransactionResult) {
 		defer close(ch)
 		for d := range sw.sub.stream {

@@ -121,7 +121,7 @@ func (sw *LogSubscription) Err() <-chan error {
 }
 
 func (sw *LogSubscription) Response() <-chan *LogResult {
-	typedChan := make(chan *LogResult)
+	typedChan := make(chan *LogResult, 100)
 	go func(ch chan *LogResult) {
 		defer close(ch)
 		for d := range sw.sub.stream {
