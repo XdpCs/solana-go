@@ -18,8 +18,8 @@ import (
 	"fmt"
 
 	bin "github.com/gagliardetto/binary"
-	"github.com/gagliardetto/solana-go"
-	"github.com/gagliardetto/solana-go/text/format"
+	"github.com/MintyFinance/solana-go-custom"
+	"github.com/MintyFinance/solana-go-custom/text/format"
 	"github.com/gagliardetto/treeout"
 )
 
@@ -128,7 +128,7 @@ func NewDelegateStakeInstructionBuilder() *DelegateStake {
 
 // NewDelegateStakeInstruction declares a new DelegateStake instruction with the provided parameters and accounts.
 func NewDelegateStakeInstruction(
-	// Accounts:
+// Accounts:
 	validatorVoteAccount solana.PublicKey,
 	stakeAuthority solana.PublicKey,
 	stakeAccount solana.PublicKey,

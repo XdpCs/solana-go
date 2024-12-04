@@ -19,8 +19,8 @@ import (
 	"fmt"
 
 	bin "github.com/gagliardetto/binary"
-	"github.com/gagliardetto/solana-go"
-	"github.com/gagliardetto/solana-go/text/format"
+	"github.com/MintyFinance/solana-go-custom"
+	"github.com/MintyFinance/solana-go-custom/text/format"
 	"github.com/gagliardetto/treeout"
 )
 
@@ -189,10 +189,10 @@ func NewInitializeInstructionBuilder() *Initialize {
 
 // NewInitializeInstruction declares a new Initialize instruction with the provided parameters and accounts.
 func NewInitializeInstruction(
-	// parameters:
+// parameters:
 	staker solana.PublicKey,
 	withdrawer solana.PublicKey,
-	// Accounts:
+// Accounts:
 	stakeAccount solana.PublicKey,
 ) *Initialize {
 	return NewInitializeInstructionBuilder().

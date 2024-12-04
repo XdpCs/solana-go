@@ -18,8 +18,8 @@ import (
 	"errors"
 	"fmt"
 	ag_binary "github.com/gagliardetto/binary"
-	ag_solanago "github.com/gagliardetto/solana-go"
-	ag_format "github.com/gagliardetto/solana-go/text/format"
+	ag_solanago "github.com/MintyFinance/solana-go-custom"
+	ag_format "github.com/MintyFinance/solana-go-custom/text/format"
 	ag_treeout "github.com/gagliardetto/treeout"
 )
 
@@ -132,9 +132,9 @@ func (inst *Create) UnmarshalWithDecoder(decoder *ag_binary.Decoder) error {
 
 // NewMemoInstruction declares a new Memo instruction with the provided parameters and accounts.
 func NewMemoInstruction(
-	// Parameters:
+// Parameters:
 	message []byte,
-	// Accounts:
+// Accounts:
 	signer ag_solanago.PublicKey) *Create {
 	return NewMemoInstructionBuilder().
 		SetMessage(message).

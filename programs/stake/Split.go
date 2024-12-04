@@ -19,8 +19,8 @@ import (
 	"fmt"
 
 	bin "github.com/gagliardetto/binary"
-	"github.com/gagliardetto/solana-go"
-	"github.com/gagliardetto/solana-go/text/format"
+	"github.com/MintyFinance/solana-go-custom"
+	"github.com/MintyFinance/solana-go-custom/text/format"
 	"github.com/gagliardetto/treeout"
 )
 
@@ -135,9 +135,9 @@ func NewSplitInstructionBuilder() *Split {
 
 // NewSplitInstruction declares a new Split instruction with the provided parameters and accounts.
 func NewSplitInstruction(
-	// Params:
+// Params:
 	lamports uint64,
-	// Accounts:
+// Accounts:
 	stakeAccount solana.PublicKey,
 	newStakeAccount solana.PublicKey,
 	stakeAuthority solana.PublicKey,

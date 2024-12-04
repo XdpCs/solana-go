@@ -17,8 +17,8 @@ package ws
 import (
 	"context"
 
-	"github.com/gagliardetto/solana-go"
-	"github.com/gagliardetto/solana-go/rpc"
+	"github.com/MintyFinance/solana-go-custom"
+	"github.com/MintyFinance/solana-go-custom/rpc"
 )
 
 type LogResult struct {
@@ -49,7 +49,7 @@ const (
 
 // LogsSubscribe subscribes to transaction logging.
 func (cl *Client) LogsSubscribe(
-	// Filter criteria for the logs to receive results by account type.
+// Filter criteria for the logs to receive results by account type.
 	filter LogsSubscribeFilterType,
 	commitment rpc.CommitmentType, // (optional)
 ) (*LogSubscription, error) {
@@ -61,9 +61,9 @@ func (cl *Client) LogsSubscribe(
 
 // LogsSubscribe subscribes to all transactions that mention the provided Pubkey.
 func (cl *Client) LogsSubscribeMentions(
-	// Subscribe to all transactions that mention the provided Pubkey.
+// Subscribe to all transactions that mention the provided Pubkey.
 	mentions solana.PublicKey,
-	// (optional)
+// (optional)
 	commitment rpc.CommitmentType,
 ) (*LogSubscription, error) {
 	return cl.logsSubscribe(
